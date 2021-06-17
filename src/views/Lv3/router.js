@@ -1,3 +1,5 @@
+import { renderRoutes } from "react-router-config";
+
 // Components
 import RichBoard from './rich-board';
 import DTBoard from './dt-board';
@@ -10,6 +12,12 @@ const Index = () => {
   return <label>Index Page</label>
 };
 
+const News = ({ route }) => (
+  <div>
+    { renderRoutes(route.children) }
+  </div>
+);
+
 const EventNews = () => {
   return <label>Event News Page</label>
 };
@@ -17,6 +25,12 @@ const EventNews = () => {
 const AwardNews = () => {
   return <label>Award News Page</label>
 };
+
+const RookieGuide = ({ route }) => (
+  <div>
+    { renderRoutes(route.children) }
+  </div>
+);
 
 const GameIntroduction = () => {
   return <label>Game Introduction Page</label>
@@ -55,6 +69,7 @@ const Routes = [
     id: 1,
     title: '最新消息',
     exact: true,
+    component: News,
     children: [
       {
         id: 0,
@@ -76,6 +91,7 @@ const Routes = [
     id: 2,
     title: '新手引導',
     exact: true,
+    component: RookieGuide,
     children: [
       {
         id: 0,

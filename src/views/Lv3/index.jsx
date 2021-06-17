@@ -1,8 +1,8 @@
 import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, Switch } from "react-router-dom";
 
 // React Router Config
-import routesConfig from './router';
+import routes from './router';
 import { renderRoutes } from 'react-router-config';
 
 // Style
@@ -19,8 +19,8 @@ const Lv3 = () => {
     <div>
       <div style={{ position: 'relative', marginBottom: '10px' }}>
         <ul className="nav">
-          { routesConfig.map((route) => (
-            <li className="nav__item">
+          { routes.map((route) => (
+            <li className="nav__item" key={route.id}>
               { !route.children || route.children.length <= 0 ?
                 <Link to={ route.path } size="small" color="primary" className="textDecorationNone">{ route.title }</Link> :
                 <PopupState variant="popover" popupId="demo-popup-menu">
@@ -30,7 +30,7 @@ const Lv3 = () => {
                       <Menu {...bindMenu(popupState)}>
                         {
                           route.children.map((children_route) => (
-                            <Link to={ children_route.path } size="small" color="primary" className="textDecorationNone">
+                            <Link to={ children_route.path } key={children_route.id} size="small" color="primary" className="textDecorationNone">
                               <MenuItem onClick={popupState.close}>{ children_route.title }</MenuItem>
                             </Link>
                           ))
@@ -43,9 +43,11 @@ const Lv3 = () => {
             </li>
           )) }
         </ul>
-        <div className="box">
-          { renderRoutes(routesConfig) }
-        </div>
+        <Switch>
+          <div className="box">
+            { renderRoutes(routes) }
+          </div>
+        </Switch>
       </div>
       <Button
         variant="contained"
