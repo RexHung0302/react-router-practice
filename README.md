@@ -9,7 +9,7 @@
 ## 使用方法
 
 ```
-1. $ git clone
+1. $ git clone https://github.com/RexHung0302/react-router-practice.git
 
 2. $ cd react-router-practice
 
