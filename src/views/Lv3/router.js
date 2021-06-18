@@ -1,9 +1,11 @@
 import { renderRoutes } from "react-router-config";
 
 // Components
+import Leaderboard from './leaderboard';
 import RichBoard from './rich-board';
 import DTBoard from './dt-board';
 import MainBoard from './main-board';
+import CustomerService from './customer-service';
 import CustomerServiceInformation from './customer-service-information';
 import Feedback from './feedback';
 
@@ -48,6 +50,12 @@ const TopUp = () => {
   return <label>Top Up Page</label>
 };
 
+const Member = ({ route }) => (
+  <div>
+    { renderRoutes(route.children) }
+  </div>
+);
+
 const GiftItmes = () => {
   return <label>Gift Itmes Page</label>
 };
@@ -68,20 +76,20 @@ const Routes = [
   {
     id: 1,
     title: '最新消息',
-    exact: true,
+    path: '/Lv3/news',
     component: News,
     children: [
       {
         id: 0,
         title: '活動消息',
-        path: '/Lv3/event-news',
+        path: '/Lv3/news/event-news',
         exact: true,
         component: EventNews
       },
       {
         id: 1,
         title: '獎項公布',
-        path: '/Lv3/award-news',
+        path: '/Lv3/news/award-news',
         exact: true,
         component: AwardNews
       }
@@ -90,27 +98,27 @@ const Routes = [
   {
     id: 2,
     title: '新手引導',
-    exact: true,
+    path: '/Lv3/introduction',
     component: RookieGuide,
     children: [
       {
         id: 0,
         title: '遊戲介紹',
-        path: '/Lv3/game-introduction',
+        path: '/Lv3/introduction/game-introduction',
         exact: true,
         component: GameIntroduction
       },
       {
         id: 1,
         title: 'VIP說明',
-        path: '/Lv3/vip-introduction',
+        path: '/Lv3/introduction/vip-introduction',
         exact: true,
         component: VipIntroduction
       },
       {
         id: 2,
         title: '贈禮說明',
-        path: '/Lv3/gift-introduction',
+        path: '/Lv3/introduction/gift-introduction',
         exact: true,
         component: GiftIntroduction
       }
@@ -126,19 +134,20 @@ const Routes = [
   {
     id: 4,
     title: '會員專區',
-    exact: true,
+    path: '/Lv3/member',
+    component: Member,
     children: [
       {
         id: 0,
         title: '贈禮項目',
-        path: '/Lv3/gift-itmes',
+        path: '/Lv3/member/gift-itmes',
         exact: true,
         component: GiftItmes
       },
       {
         id: 1,
         title: '存摺細項',
-        path: '/Lv3/passbook',
+        path: '/Lv3/member/passbook',
         exact: true,
         component: Passbook
       }
@@ -147,26 +156,27 @@ const Routes = [
   {
     id: 5,
     title: '活動排行',
-    exact: true,
+    path: '/Lv3/leaderboard',
+    component: Leaderboard,
     children: [
       {
         id: 0,
         title: '富豪榜',
-        path: '/Lv3/rich-board',
+        path: '/Lv3/leaderboard/rich-board',
         exact: true,
         component: RichBoard
       },
       {
         id: 1,
         title: '龍虎榜',
-        path: '/Lv3/dt-board',
+        path: '/Lv3/leaderboard/dt-board',
         exact: true,
         component: DTBoard
       },
       {
         id: 2,
         title: '主打榜',
-        path: '/Lv3/main-board',
+        path: '/Lv3/leaderboard/main-board',
         exact: true,
         component: MainBoard
       }
@@ -175,19 +185,20 @@ const Routes = [
   {
     id: 6,
     title: '客服中心',
-    exact: true,
+    path: '/Lv3/customer-service',
+    component: CustomerService,
     children: [
       {
         id: 0,
         title: '客服資訊',
-        path: '/Lv3/customer-service-information',
+        path: '/Lv3/customer-service/information',
         exact: true,
         component: CustomerServiceInformation
       },
       {
         id: 1,
         title: '意見回饋',
-        path: '/Lv3/feedback',
+        path: '/Lv3/customer-service/feedback',
         exact: true,
         component: Feedback
       }
